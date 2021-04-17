@@ -12,14 +12,18 @@ const port = 3000;
 //True = locked
 let state = "true";
 
-function wsBroadcast(message) {
+async function wsBroadcast(message) {
   wss.clients.forEach(function each(client) {
     if (client !== wss && client.readyState === WebSocket.OPEN) {
       client.send(message);
     }
   });
   //Hit the esp here to force update
-  fetch("http://192.168.0.31");
+  try {
+    await fetch("http://192.168.0.31");
+  } catch (error) {
+    console.log("cant reach esp");
+  }
 }
 
 wss.on("connection", function connection(ws) {
