@@ -5,12 +5,12 @@
 #include <ESP8266mDNS.h>
 #include <Arduino_JSON.h>
 
-#define SOLENOID 5
+#define SOLENOID D5
 #define LED 16
 
 #ifndef STASSID
-#define STASSID "networkName"
-#define STAPSK  "password"
+#define STASSID "NETGEAR78"
+#define STAPSK  "suttonFam"
 #endif
 
 
@@ -116,21 +116,22 @@ void setup(void) {
 void loop(void) {
   server.handleClient();
   MDNS.update();
+  String state;
 
   for(int i = 0; i < myObject.length(); i++){
      JSONVar keys = myObject[i].keys();
-     JSONVar state = myObject[i][keys[0]];
-     Serial.println(state);
+     JSONVar stateData = myObject[i][keys[0]];
+     state = (const char*)stateData;
   }
-  if((String)state == "unlocked")
+  if(state == "unlocked")
   {
     Serial.println("Unlocking Door");
     digitalWrite(SOLENOID, LOW);
   }
-  else if((String)state == "locked")
+  else if(state == "locked")
   {
     Serial.println("Locking Door");
-    digitalWrite(SOLENDOID, HIGH);
+    digitalWrite(SOLENOID, HIGH);
   }
   else
   {
