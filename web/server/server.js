@@ -38,7 +38,7 @@ wss.on("connection", function connection(ws) {
 app.get("/", cors(), (req, res) => res.send("Main route"));
 
 app.get("/state", cors(), (req, res) => {
-  res.json[{ state: state }];
+  res.json([{ state: state }]);
 });
 
 app.get("/toggle", cors(), (req, res) => {

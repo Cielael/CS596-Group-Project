@@ -16,7 +16,6 @@
 
 JSONVar myObject; 
 
-
 const char* ssid = STASSID;
 const char* password = STAPSK;
 
@@ -104,10 +103,6 @@ void setup(void) {
    
   });
   
-
-
-
-
   server.onNotFound(handleNotFound);
 
   server.begin();
@@ -125,6 +120,20 @@ void loop(void) {
   for(int i = 0; i < myObject.length(); i++){
      JSONVar keys = myObject[i].keys();
      JSONVar state = myObject[i][keys[0]];
-     Serial.print(state);
+     Serial.println(state);
+  }
+  if(state == "unlocked")
+  {
+    Serial.println("Unlocking Door");
+    digitalWrite(SOLENOID, LOW);
+  }
+  else if(state == "locked")
+  {
+    Serial.println("Locking Door");
+    digitalWrite(SOLENDOID, HIGH);
+  }
+  else
+  {
+    Serial.println("ERROR: UNKNOWN STATE");
   }
 }
