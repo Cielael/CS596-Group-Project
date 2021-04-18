@@ -8,9 +8,7 @@ const cors = require("cors");
 const wss = new WebSocket.Server({ server: server });
 const port = 3000;
 
-//flase = Unlocked
-//True = locked
-let state = "true";
+let state = "unlocked";
 
 async function wsBroadcast(message) {
   wss.clients.forEach(function each(client) {
@@ -44,7 +42,7 @@ app.get("/state", cors(), (req, res) => {
 });
 
 app.get("/toggle", cors(), (req, res) => {
-  state = state === "true" ? "false" : "true";
+  state = state === "unlocked" ? "locked" : "unlocked";
   wsBroadcast(state);
   res.send("toggle route");
 });

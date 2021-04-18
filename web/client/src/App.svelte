@@ -19,7 +19,7 @@
 
 	function toggle(){
 		//send message to ws server
-		state = state === "true" ? "false" : "true";
+		state = state === "unlocked" ? "locked" : "unlocked";
 		socket.send(state);
 		
 	}
