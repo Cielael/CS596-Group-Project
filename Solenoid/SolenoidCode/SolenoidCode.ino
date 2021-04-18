@@ -124,18 +124,7 @@ void loop(void) {
 
   for(int i = 0; i < myObject.length(); i++){
      JSONVar keys = myObject[i].keys();
-     JSONVar state = myObject[i][keys[1]];
- 
-     
+     JSONVar state = myObject[i][keys[0]];
      Serial.print(state);
-//     Serial.print(" ");
-//     Serial.println(minute);
-
-   
-
-    
-     
   }
-
-  
 }
