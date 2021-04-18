@@ -5,9 +5,12 @@
 #include <ESP8266mDNS.h>
 #include <Arduino_JSON.h>
 
+#define SOLENOID 5
+#define LED 16
+
 #ifndef STASSID
-#define STASSID "NETGEAR78"
-#define STAPSK  "suttonFam"
+#define STASSID "networkName"
+#define STAPSK  "password"
 #endif
 
 
@@ -65,6 +68,11 @@ void handleNotFound() {
 void setup(void) {
   Serial.begin(115200);
 
+  pinMode(SOLENOID, OUTPUT);
+  pinMode(LED, OUTPUT);
+  digitalWrite(SOLENOID, LOW);
+  digitalWrite(LED, LOW);
+  
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
   Serial.println("");
