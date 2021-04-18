@@ -122,12 +122,12 @@ void loop(void) {
      JSONVar state = myObject[i][keys[0]];
      Serial.println(state);
   }
-  if(state == "unlocked")
+  if((String)state == "unlocked")
   {
     Serial.println("Unlocking Door");
     digitalWrite(SOLENOID, LOW);
   }
-  else if(state == "locked")
+  else if((String)state == "locked")
   {
     Serial.println("Locking Door");
     digitalWrite(SOLENDOID, HIGH);
