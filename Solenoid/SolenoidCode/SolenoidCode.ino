@@ -9,8 +9,8 @@
 #define LED 16
 
 #ifndef STASSID
-#define STASSID "NETGEAR78"
-#define STAPSK  "suttonFam"
+#define STASSID "WIFINETWORK"
+#define STAPSK  "PASSWORD"
 #endif
 
 
