@@ -95,8 +95,8 @@ void setup(void) {
     server.send(200, "text/plain", "home page");
     
     //when ever this endpoint is hit, send a get to backend server and update times list
-    //TODO change ip to server
     Serial.print("esp server hit");
+    //TODO change to ip to server
     String timeData = httpGETRequest("http://192.168.0.17:3000/state");
     myObject = JSON.parse(timeData);
     Serial.println(myObject);
@@ -109,6 +109,7 @@ void setup(void) {
   Serial.println("HTTP server started");
 
   //Get state from server on startup
+  //TODO change to ip to server
   String state = httpGETRequest("http://192.168.0.17:3000/state");
   myObject = JSON.parse(state);
 }

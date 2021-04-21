@@ -3,8 +3,6 @@
 	let state; 
 
 	//Connecting to websocket
-	/* Change localhost to your host IP in order to connect to the server
-	 * on other devices such as mobile */
 	const socket = new WebSocket("ws://localhost:3000");
 	socket.addEventListener('open', function (event) {
     console.log("ws connection open");
@@ -53,8 +51,8 @@
 </style>
 
 <div class="mainbody">
-	<h1>{state}</h1>
-	<button class="mainButton" on:click={toggle}>Button</button>
+	<h1>Current State: {state}</h1>
+	<button class="mainButton" on:click={toggle}>Toggle</button>
 
 
 

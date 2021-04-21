@@ -18,6 +18,7 @@ async function wsBroadcast(message) {
   });
   //Hit the esp here to force update
   try {
+    //TODO: change to solenoid esp ip
     await fetch("http://192.168.0.31");
   } catch (error) {
     console.log("cant reach esp");
